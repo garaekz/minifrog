@@ -1,6 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import { HandlerContext, PageProps } from "$fresh/server.ts";
 import MainLayout from "../layouts/MainLayout.tsx";
+import { User } from "../libs/types.ts";
 
 export const handler = {
   GET: async (req: Request, ctx: HandlerContext) => {
@@ -8,17 +9,12 @@ export const handler = {
   },
 };
 
-export default function Home(props: PageProps) {
-  const { user } = props.data;
-
+export default function Home({ data: { user } }: { data: { user: User } } ) {
   return (
-    <MainLayout>
+    <MainLayout user={user}>
       <Head>
-        <title>Fresh App</title>
+        <title>Minifrog 🐸 🍋 | Home</title>
       </Head>
-      {user && (
-        <h1> Hi {user.user_metadata.user_name} </h1>
-      )}
       <div class="p-4 mx-auto max-w-screen-md">
         <img
           src="/logo.svg"

@@ -1,6 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import { HandlerContext, PageProps } from "$fresh/server.ts";
-import MainLayout from "../../layouts/MainLayout.tsx";
+import MainLayout from "../../../layouts/MainLayout.tsx";
 
 export const handler = {
   GET: async (_: Request, ctx: HandlerContext) => {
@@ -8,7 +8,7 @@ export const handler = {
   },
 };
 
-export default function Home(props: PageProps) {
+export default function CreatePost(props: PageProps) {
   const { user } = props.data;
   return (
     <MainLayout user={user}>
@@ -16,14 +16,7 @@ export default function Home(props: PageProps) {
         <title>Minifrog 🐸 🍋 | Admin Page</title>
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
-        <img
-          src="/logo.svg"
-          class="w-32 h-32"
-          alt="the fresh logo: a sliced lemon dripping with juice"
-        />
-        <p class="my-6">
-          This is private, you should be logged in to see this.
-        </p>
+        <h1 class="text-4xl font-bold dark:text-gray-200"> Welcome to the admin page</h1>
       </div>
     </MainLayout>
   );

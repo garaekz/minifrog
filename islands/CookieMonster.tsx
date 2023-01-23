@@ -1,5 +1,4 @@
 import { IS_BROWSER } from "$fresh/runtime.ts";
-import { Cookie, setCookie } from 'std/http/cookie.ts';
 
 export default function CookieMonster({ provider }: { provider: string}) {
   if (IS_BROWSER) {
@@ -8,10 +7,7 @@ export default function CookieMonster({ provider }: { provider: string}) {
     const token = url.hash.split('&')[0].split('=')[1];
   
     if (token) {
-      const headers = new Headers();
-      
-      const cookie: Cookie = { name: "supabase.session.token", value: token, path: "/", httpOnly: true, secure: true, sameSite: "Lax" };
-      setCookie(headers, cookie);
+      document.cookie = `supatoken=${token}; path=/; Secure`
       window.location.href = `/admin`
     }
   }
