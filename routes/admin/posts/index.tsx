@@ -2,12 +2,6 @@ import { Head } from "$fresh/runtime.ts";
 import { HandlerContext, PageProps } from "$fresh/server.ts";
 import MainLayout from "../../../layouts/MainLayout.tsx";
 
-export const handler = {
-  GET: async (_: Request, ctx: HandlerContext) => {
-    return await ctx.render(ctx.state);
-  },
-};
-
 export default function CreatePost(props: PageProps) {
   const { user } = props.data;
   return (

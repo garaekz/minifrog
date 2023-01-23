@@ -5,6 +5,7 @@ import { User } from "../libs/types.ts";
 
 export const handler = {
   GET: async (req: Request, ctx: HandlerContext) => {
+    console.log('index state', ctx.state);
     return await ctx.render(ctx.state);
   },
 };

@@ -3,7 +3,7 @@ import { HandlerContext, PageProps } from "$fresh/server.ts";
 import MainLayout from "../../../layouts/MainLayout.tsx";
 
 export const handler = {
-  GET: async (_: Request, ctx: HandlerContext) => {
+  POST: async (req: Request, ctx: HandlerContext) => {
     return await ctx.render(ctx.state);
   },
 };
@@ -19,7 +19,7 @@ export default function CreatePost(props: PageProps) {
         <h1 class="text-4xl font-bold dark:text-gray-200">Create a new post</h1>
         <form
           method="POST"
-          action="/admin/posts"
+          action=""
           class="mt-4 flex flex-col gap-4"
         >
           <div class="flex flex-col gap-2">

@@ -1,5 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import { HandlerContext, PageProps } from "$fresh/server.ts";
+import { checkAuthHandler } from "../../handlers/CheckAuthHandler.ts";
 import MainLayout from "../../layouts/MainLayout.tsx";
 
 export const handler = {
