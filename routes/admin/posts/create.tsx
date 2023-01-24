@@ -1,15 +1,35 @@
 import { Head } from "$fresh/runtime.ts";
-import { HandlerContext, PageProps } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { WithSession } from "fresh_session";
 import MainLayout from "../../../layouts/MainLayout.tsx";
+import { AdminData } from "../index.tsx";
 
-export const handler = {
-  POST: async (req: Request, ctx: HandlerContext) => {
-    return await ctx.render(ctx.state);
+export const handler: Handlers<
+AdminData,
+WithSession
+> = {
+  GET: (_, ctx) => {
+    const { session } = ctx.state;
+    return ctx.render({
+      session: session.data,
+    });
+  },
+
+  POST: async (req: Request, ctx) => {
+    const { session } = ctx.state;
+    const data = await req.formData();
+    const title = data.get("title");
+    const content = data.get("content");
+    // TODO: Save to database, make this content with a wysiwyg editor
+    console.log(title, content);
+    return ctx.render({
+      session: session.data,
+    });
   },
 };
 
-export default function CreatePost(props: PageProps) {
-  const { user } = props.data;
+export default function CreatePost({ data }: PageProps<AdminData>) {
+  const { session: { user } } = data;
   return (
     <MainLayout user={user}>
       <Head>

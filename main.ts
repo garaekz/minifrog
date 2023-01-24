@@ -1,3 +1,5 @@
+import { supabase, authStateChangeHandler } from './libs/supabase.ts';
+
 /// <reference no-default-lib="true" />
 /// <reference lib="dom" />
 /// <reference lib="dom.iterable" />
@@ -10,5 +12,8 @@ import manifest from "./fresh.gen.ts";
 
 import twindPlugin from "$fresh/plugins/twind.ts";
 import twindConfig from "./twind.config.ts";
+
+supabase.auth.onAuthStateChange(authStateChangeHandler);
+
 
 await start(manifest, { plugins: [twindPlugin(twindConfig)] });

@@ -1,9 +1,23 @@
 import { Head } from "$fresh/runtime.ts";
-import { HandlerContext, PageProps } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { WithSession } from "fresh_session";
 import MainLayout from "../../../layouts/MainLayout.tsx";
+import { AdminData } from "../index.tsx";
 
-export default function CreatePost(props: PageProps) {
-  const { user } = props.data;
+export const handler: Handlers<
+AdminData,
+WithSession
+> = {
+  GET: (_, ctx) => {
+    const { session } = ctx.state;
+    return ctx.render({
+      session: session.data,
+    });
+  },
+};
+
+export default function MyPosts({ data }: PageProps<AdminData>) {
+  const { session: { user } } = data;
   return (
     <MainLayout user={user}>
       <Head>

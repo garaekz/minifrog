@@ -1,16 +1,27 @@
 import { Head } from "$fresh/runtime.ts";
-import { HandlerContext, PageProps } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 import MainLayout from "../layouts/MainLayout.tsx";
 import { User } from "../libs/types.ts";
+import { AdminData } from "./admin/index.tsx";
+import { WithSession } from "fresh_session";
 
-export const handler = {
-  GET: async (req: Request, ctx: HandlerContext) => {
-    console.log('index state', ctx.state);
-    return await ctx.render(ctx.state);
+export const handler: Handlers<
+AdminData,
+WithSession
+> = {
+  GET: (_, ctx) => {
+    const { session } = ctx.state;
+
+    return ctx.render({
+      session: session.data,
+    });
   },
 };
 
-export default function Home({ data: { user } }: { data: { user: User } } ) {
+export default function Home({ data }: PageProps<AdminData>) {
+  const { session } = data;
+  const user = session.user;
+  
   return (
     <MainLayout user={user}>
       <Head>

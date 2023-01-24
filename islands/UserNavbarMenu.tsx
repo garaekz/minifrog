@@ -50,7 +50,7 @@ export default function UserNavbarMenu({ user }: { user: User }) {
             </a>
             <form
               method="POST"
-              action="#"
+              action="/auth/signout"
               role="none"
               class="border-t border-gray-200"
             >

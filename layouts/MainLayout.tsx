@@ -9,7 +9,7 @@ const handle = {
   },
 };
 
-export default function MainLayout({ children, user }: { children: ComponentChildren, user: User }) {
+export default function MainLayout({ children, user }: { children: ComponentChildren, user: User | null }) {
   return (
     <>
       <Navbar user={user} />

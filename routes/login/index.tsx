@@ -3,7 +3,7 @@ import MainLayout from "../../layouts/MainLayout.tsx";
 
 export default function Login() {
   return (
-    <MainLayout>
+    <MainLayout user={null}>
       <Head>
         <title>Minifrog 🐸 🍋 | Login</title>
       </Head>

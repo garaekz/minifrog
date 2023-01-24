@@ -1,6 +1,16 @@
-import { MiddlewareHandlerContext } from '$fresh/server.ts';
-import { checkAuthHandler } from '../../handlers/CheckAuthHandler.ts';
+import { MiddlewareHandlerContext } from "$fresh/server.ts";
+import { WithSession } from "fresh_session";
 
-export const handler = async (_: Request, ctx: MiddlewareHandlerContext): Promise <Response> => {
-    return await checkAuthHandler(ctx);
-}
+export const handler = (_: Request, ctx: MiddlewareHandlerContext<WithSession>) => {
+  const { session } = ctx.state;
+  if (!session.get("user")) {
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: "/login",
+      },
+    });
+  }
+
+  return ctx.next();
+};

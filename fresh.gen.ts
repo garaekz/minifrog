@@ -10,9 +10,10 @@ import * as $3 from "./routes/admin/posts/create.tsx";
 import * as $4 from "./routes/admin/posts/index.tsx";
 import * as $5 from "./routes/api/joke.ts";
 import * as $6 from "./routes/auth/[provider]/callback.tsx";
-import * as $7 from "./routes/index.tsx";
-import * as $8 from "./routes/login/[provider].tsx";
-import * as $9 from "./routes/login/index.tsx";
+import * as $7 from "./routes/auth/signout.ts";
+import * as $8 from "./routes/index.tsx";
+import * as $9 from "./routes/login/[provider].tsx";
+import * as $10 from "./routes/login/index.tsx";
 import * as $$0 from "./islands/CookieMonster.tsx";
 import * as $$1 from "./islands/UserNavbarMenu.tsx";
 
@@ -25,9 +26,10 @@ const manifest = {
     "./routes/admin/posts/index.tsx": $4,
     "./routes/api/joke.ts": $5,
     "./routes/auth/[provider]/callback.tsx": $6,
-    "./routes/index.tsx": $7,
-    "./routes/login/[provider].tsx": $8,
-    "./routes/login/index.tsx": $9,
+    "./routes/auth/signout.ts": $7,
+    "./routes/index.tsx": $8,
+    "./routes/login/[provider].tsx": $9,
+    "./routes/login/index.tsx": $10,
   },
   islands: {
     "./islands/CookieMonster.tsx": $$0,
