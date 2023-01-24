@@ -4,11 +4,10 @@ import { User } from "./types.ts";
 
 export type SupaSession = Session | null;
 
-const supabaseUrl = "https://ackljedzzuaraoreoeoj.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFja2xqZWR6enVhcmFvcmVvZW9qIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQxODgwMTcsImV4cCI6MTk4OTc2NDAxN30.g5mY5Ybp_uGS2bONOxkHE4b3Y13NlW22euXSiyICpwA";
+const supabaseUrl = Deno.env.get("SUPABASE_URL") as string;
+const supabaseKey = Deno.env.get("SUPABASE_ANON_KEY") as string;
 
-export const supabase = await createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const setUserSession = async (supaSession: SupaSession, freshSession: FreshSession) => {
   if (!supaSession) {
@@ -39,19 +38,13 @@ export const setUserSession = async (supaSession: SupaSession, freshSession: Fre
   return { user, error: null };
 };
 
-export const authStateChangeHandler = async (event: AuthChangeEvent, supaSession: SupaSession) => {
-  // const freshSession = new FreshSession();
-  // console.log(freshSession);
-  // console.log(event);
+export const authStateChangeHandler = (event: AuthChangeEvent, supaSession: SupaSession) => {
+  console.log(event);
   if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED" && supaSession) {
-    // const { error } = await setUserSession(supaSession, freshSession);
-    // if (error) {
-    //   console.log(error);
-    // }
+    console.log('signed in');
   }
 
   if (event === "SIGNED_OUT") {
-    console.log("signed out");
-    // freshSession.clear();
+    console.log('signed out');
   }
 }
