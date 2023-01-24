@@ -12,10 +12,8 @@ export const handler: Handlers<AdminData, WithSession> = {
         status: 500,
       });
     }
-    
-    console.log('user', ctx.state.session.get("user"));
+  
     ctx.state.session.clear();
-    console.log('user', ctx.state.session.get("user"));
     return new Response(null, {
       status: 302,
       headers: {

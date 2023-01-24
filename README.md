@@ -36,8 +36,6 @@ Overall, this project has been a fun and rewarding experience so far. I'm excite
 ### Usage
 Start the project:
 ```
-
 deno task start
-
 ```
 This will watch the project directory and restart as necessary.
