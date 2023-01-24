@@ -1,6 +1,7 @@
 import { AuthChangeEvent, createClient, Session } from "supabase";
 import { Session as FreshSession } from "fresh_session";
 import { User } from "./types.ts";
+import "https://deno.land/std@0.145.0/dotenv/load.ts";
 
 export type SupaSession = Session | null;
 
