@@ -1,6 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { WithSession } from "fresh_session";
+import RichContent from "../../../islands/RichContent.tsx";
 import MainLayout from "../../../layouts/MainLayout.tsx";
 import { AdminData } from "../index.tsx";
 
@@ -56,11 +57,7 @@ export default function CreatePost({ data }: PageProps<AdminData>) {
             <label for="content" class="dark:text-gray-200 text-gray-700">
               Content
             </label>
-            <textarea
-              name="content"
-              id="content"
-              class="border-gray-300 border-2 rounded-md px-2 py-1"
-            ></textarea>
+            <RichContent />
             <button
               type="submit"
               class="px-2 py-2 rounded-md bg-blue-500 text-white font-medium hover:bg-blue-600"

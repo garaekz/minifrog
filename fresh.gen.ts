@@ -15,7 +15,8 @@ import * as $8 from "./routes/index.tsx";
 import * as $9 from "./routes/login/[provider].tsx";
 import * as $10 from "./routes/login/index.tsx";
 import * as $$0 from "./islands/CookieMonster.tsx";
-import * as $$1 from "./islands/UserNavbarMenu.tsx";
+import * as $$1 from "./islands/RichContent.tsx";
+import * as $$2 from "./islands/UserNavbarMenu.tsx";
 
 const manifest = {
   routes: {
@@ -33,7 +34,8 @@ const manifest = {
   },
   islands: {
     "./islands/CookieMonster.tsx": $$0,
-    "./islands/UserNavbarMenu.tsx": $$1,
+    "./islands/RichContent.tsx": $$1,
+    "./islands/UserNavbarMenu.tsx": $$2,
   },
   baseUrl: import.meta.url,
   config,

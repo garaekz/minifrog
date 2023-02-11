@@ -1,5 +1,6 @@
 {
   "imports": {
+    "react": "http://localhost:8080/preact@10.11.0/compat",
     "$fresh/": "https://deno.land/x/fresh@1.1.2/",
     "preact": "https://esm.sh/preact@10.11.0",
     "preact/": "https://esm.sh/preact@10.11.0/",
@@ -11,6 +12,13 @@
     "supabase": "https://esm.sh/@supabase/supabase-js@2.4.0",
     "supabase/": "https://esm.sh/@supabase/supabase-js@2.4.0/",
     "std/": "https://deno.land/std@0.160.0/",
+    "slate": "https://esm.sh/slate@0.90.0?alias=react:preact/compat,react-dom:preact/compat,@types/react:preact/compat&deps=preact@10.11.0",
+    "slate-react": "https://esm.sh/slate-react@0.90.0?alias=react:preact/compat,react-dom:preact/compat,@types/react:preact/compat&deps=preact@10.11.0",
+    "slate-history": "https://esm.sh/slate-history@0.86.0?alias=react:preact/compat,react-dom:preact/compat,@types/react:preact/compat&deps=preact@10.11.0",
+    "react-icons": "https://deno.land/x/react_icons@0.2.3",
+    "react-icons/bi": "https://deno.land/x/react_icons@0.2.3/bi/mod.ts",
+    "react-icons/md": "https://deno.land/x/react_icons@0.2.3/md/mod.ts",
+    "react-icons/ri": "https://deno.land/x/react_icons@0.2.3/ri/mod.ts",
     "fresh_session": "https://deno.land/x/fresh_session@0.2.0/mod.ts"
   }
 }
