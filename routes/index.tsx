@@ -4,7 +4,6 @@ import MainLayout from "../layouts/MainLayout.tsx";
 import { User } from "../libs/types.ts";
 import { AdminData } from "./admin/index.tsx";
 import { WithSession } from "fresh_session";
-import RichContent from "../islands/RichContent.tsx";
 
 export const handler: Handlers<
 AdminData,
@@ -24,10 +23,7 @@ export default function Home({ data }: PageProps<AdminData>) {
   const user = session.user;
   
   return (
-    <MainLayout user={user}>
-      <Head>
-        <title>Minifrog 🐸 🍋 | Home</title>
-      </Head>
+    <MainLayout user={user} headTitle="Home">
       <div class="p-4 mx-auto max-w-screen-md">
         <img
           src="/logo.svg"
@@ -38,7 +34,6 @@ export default function Home({ data }: PageProps<AdminData>) {
           Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
           file, and refresh.
         </p>
-        <RichContent />
       </div>
     </MainLayout>
   );

@@ -1,7 +1,7 @@
-import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { useEffect, useState } from "preact/hooks";
 import { WithSession } from "fresh_session";
-import RichContent from "../../../islands/RichContent.tsx";
+import CreatePostIsland from "../../../islands/CreatePost.tsx";
 import MainLayout from "../../../layouts/MainLayout.tsx";
 import { AdminData } from "../index.tsx";
 
@@ -31,12 +31,23 @@ WithSession
 
 export default function CreatePost({ data }: PageProps<AdminData>) {
   const { session: { user } } = data;
+  const [content, setContent] = useState<string>("");
+  
+  const callback = payload => {
+    setContent(payload)
+    console.log(content)
+  }
+
+  useEffect(() => {
+    console.log('content changed', content);
+  }, [content]);
+  
   return (
-    <MainLayout user={user}>
-      <Head>
-        <title>Minifrog 🐸 🍋 | Admin Page</title>
-      </Head>
+    <MainLayout user={user} headTitle="New Post">
       <div class="p-4 mx-auto max-w-screen-md">
+        <CreatePostIsland />
+      </div>
+      {/* <div class="p-4 mx-auto max-w-screen-md">
         <h1 class="text-4xl font-bold dark:text-gray-200">Create a new post</h1>
         <form
           method="POST"
@@ -57,7 +68,7 @@ export default function CreatePost({ data }: PageProps<AdminData>) {
             <label for="content" class="dark:text-gray-200 text-gray-700">
               Content
             </label>
-            <RichContent />
+            <RichContent callback={callback}/>
             <button
               type="submit"
               class="px-2 py-2 rounded-md bg-blue-500 text-white font-medium hover:bg-blue-600"
@@ -69,7 +80,7 @@ export default function CreatePost({ data }: PageProps<AdminData>) {
             </a>
           </div>
         </form>
-      </div>
+      </div> */}
     </MainLayout>
   );
 }
